@@ -12,3 +12,8 @@ Route::post('/wallets', [WalletController::class, 'store']);
 Route::get('/wallets/{id}', [WalletController::class, 'show']);
 
 Route::post('/transactions', [TransactionController::class, 'store']);
+
+// testing if server works -WORKING
+// Route::get('/test', function () {
+//     return response()->json(['message' => 'API works']);
+// });
