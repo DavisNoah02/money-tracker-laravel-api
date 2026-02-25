@@ -9,36 +9,30 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * User Model
+ *
+ * Represents a system user who can own multiple wallets.
+ */
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    //  mass assignable attribues
+    
     protected $fillable = [
         'name',
         'email',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+    // Attributes hidden from JSON responses.
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    // Attribute type casting
     protected function casts(): array
 {
     return [
@@ -46,7 +40,7 @@ class User extends Authenticatable
     ];
 }
 
-//  relationship to Wallets.
+//  A user can have multiple wallets.
     public function wallets(): HasMany
     {
         return $this->hasMany(Wallet::class);
